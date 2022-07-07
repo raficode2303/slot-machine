@@ -13,28 +13,18 @@ export const Content = styled.img`
   max-width: 856px;
   transform: scale(1.4);
   margin: 3% 12%;
-  /* animation: circle 5s linear 2s infinite alternate; */
+  animation: light 1.5s linear 2s infinite alternate;
 
   :hover {
-    opacity: 0.7;
+    opacity: 0.5;
   }
 
-  @keyframes circle {
+  @keyframes light {
     0% {
-      margin: 0;
-      filter: blur(0);
-    }
-    50% {
-      margin: 0 auto;
-      filter: blur(4px);
-    }
-    75% {
-      margin: auto 0;
-      filter: blur(6px);
+      filter: blur(1px);
     }
     100% {
-      margin: 0;
-      filter: blur(8px);
+      filter: blur(0px);
     }
   }
 `
