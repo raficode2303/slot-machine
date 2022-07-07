@@ -1,10 +1,9 @@
-// 1. make screen of rotate symbols
-// 2. make a button to press to play
 import React from 'react'
+import { createRoot } from 'react-dom/client'
 import App from './App'
 
-function Index() {
-  return <div>Index</div>
-}
+const container = document.getElementById('root')
 
-export default Index
+const root = createRoot(container)
+
+root.render(<App name='slot-machine' />)
