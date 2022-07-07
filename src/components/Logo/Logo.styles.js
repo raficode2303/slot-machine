@@ -1,13 +1,18 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-  position: relative;
   max-height: 445px;
+  max-width: 100%;
+  margin-top: 6%;
+
   background-color: silver;
 `
 
 export const Content = styled.img`
-  max-width: 100%;
+  width: 100%;
+  max-width: 856px;
+  transform: scale(1.4);
+  margin: 3% 12%;
   /* animation: circle 5s linear 2s infinite alternate; */
 
   :hover {
