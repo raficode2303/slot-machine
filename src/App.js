@@ -6,48 +6,39 @@
 // useContext, useMemo, useReducer, React Router v6
 // use carucella 3d??
 import React from 'react'
+
+// Logo image
+import logo from './images/logo.png'
+// components
+import { Header } from './components/Header'
 import { Button } from './components/Button'
-import { Slot } from './components/Slot'
-import { Logo } from './components/Logo'
+import { Reel } from './components/Reel'
 
 // GlobalStyle
 import { GlobalStyle } from './GlobalStyles.styles'
-// unike key
-import { nanoid } from 'nanoid'
-
-// symbols
-import { Symbols, shuffleArray } from './helpers'
-
-const Symbols2 = shuffleArray(Symbols)
 
 const rounds = ['symbol1', 'symbol2', 'symbol3']
 
 function App() {
   const [loading, setLoading] = React.useState(true)
-  const [images, setImages] = React.useState(Symbols2)
 
-  const changeImages = () => {
-    console.log('enter changeimages')
-    setImages(shuffleArray(images))
+  const RotateReels = () => {
+    console.log('enter RotateReelsRotateReels')
+    // setImages(shuffleArray(images))
   }
 
   return (
     <>
+      <h2>One-Armed Bandit</h2>
+
       <GlobalStyle />
       <div className='app'>
-        <Logo />
-        <div className='slots-container'>
-          {rounds.map((symbol, index) => (
-            <Slot
-              key={nanoid()}
-              src1={Symbols[Math.floor(Math.random() * Symbols.length)]}
-              src2={Symbols[Math.floor(Math.random() * Symbols.length)]}
-              src3={Symbols[Math.floor(Math.random() * Symbols.length)]}
-            />
-          ))}
+        <Header bcgimage={logo} />
+        <div className='reels-container'>
+          <Reel />
         </div>
 
-        <Button changeImages={changeImages} />
+        <Button RotateReels={RotateReels} />
       </div>
     </>
   )

@@ -9,3 +9,10 @@ export const Content = styled.img`
   height: 100%;
   background-color: #333;
 `
+
+export const SymbolImg = styled.img`
+  width: 200px;
+  @media screen and (max-width: 500px) {
+    width: 150px;
+  }
+`
