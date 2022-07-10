@@ -1,10 +1,17 @@
 // start 07/07/2022, 11:35
-// 1. make screen of rotate symbols - 50%
-// 2. make a button to press to play - V
-// 3. make - line at the middle of the second symbol
-// show alert when winner
+
+// - make reels container to adjust for any amount of reels
+// make it spin
+// - make - line at the middle of the second symbol
+// add dashboard
+// add music
+
+// - show alert when winner
 // useContext, useMemo, useReducer, React Router v6
+
 // use carucella 3d??
+// make reels curve
+
 import React from 'react'
 
 // Logo image
@@ -12,7 +19,7 @@ import logo from './images/logo.png'
 // components
 import { Header } from './components/Header'
 import { Button } from './components/Button'
-import { Reel } from './components/Reel'
+import { Main } from './components/Main'
 
 // GlobalStyle
 import { GlobalStyle } from './GlobalStyles.styles'
@@ -34,12 +41,10 @@ function App() {
       <GlobalStyle />
       <div className='app'>
         <Header bcgimage={logo} />
-        <div className='reels-container'>
-          <Reel />
-        </div>
 
-        <Button RotateReels={RotateReels} />
+        <Main />
       </div>
+      <Button RotateReels={RotateReels} />
     </>
   )
 }
