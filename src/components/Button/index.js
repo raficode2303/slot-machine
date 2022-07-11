@@ -1,10 +1,13 @@
 import React from 'react'
-import { Wrapper, Content } from './Button.styles'
+import { PlayButton } from './Button.styles'
 
-export const Button = ({ translateReels }) => {
+export const Button = ({ translateReels, disable }) => {
+  console.log('disable:', disable)
   return (
-    <Wrapper onClick={translateReels}>
-      <Content>press to play!</Content>
-    </Wrapper>
+    <PlayButton
+      defaultValue='press to play!'
+      disabled={disable}
+      onClick={translateReels}
+    />
   )
 }

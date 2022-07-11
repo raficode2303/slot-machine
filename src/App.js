@@ -1,7 +1,5 @@
 // start 07/07/2022, 11:35
 
-// - make reels container to adjust for any amount of reels
-// ***!!! make it spin !!!*** - diffuclty!
 // - make - line at the middle of the second symbol
 // add dashboard
 // add music
@@ -28,16 +26,30 @@ const rounds = ['symbol1', 'symbol2', 'symbol3']
 
 function App() {
   const [loading, setLoading] = React.useState(true)
-  const [numberOfreels, setNumberOfreels] = React.useState(1)
+  const [numberOfreels, setNumberOfreels] = React.useState(3)
   const [buttonChanged, setButtonChanged] = React.useState(false)
-  const [reelPosition, setReelPosition] = React.useState(0)
+  const [reelPosition, setReelPosition] = React.useState(() => 0)
+  const [timesTorun, setTimesTorun] = React.useState(() => 100)
 
   React.useEffect(() => {
-    console.log('enter useEffect, buttonChanged', reelPosition % 2500)
-    if (!buttonChanged) return
-    setReelPosition((prev) => prev - 10)
-    if (reelPosition % 2500 < 1) setReelPosition((prev) => prev - 1)
-    else setButtonChanged(false)
+    console.log('reelPosition at useEffect: ', reelPosition)
+    if ((reelPosition === 0 && !buttonChanged) || !buttonChanged) return
+
+    const reelsSpinInterval = setInterval(() => {
+      if (Math.abs(reelPosition) < 2400) setReelPosition((prev) => prev - 50)
+      else {
+        clearInterval(reelsSpinInterval)
+        setButtonChanged(false)
+        setReelPosition(0)
+      }
+
+      console.log(
+        'Math.abs(reelPosition), timesTorun: ',
+        Math.abs(reelPosition),
+        timesTorun
+      )
+    }, 10)
+    return () => clearInterval(reelsSpinInterval)
   }, [buttonChanged, reelPosition])
 
   const translateReels = () => {
@@ -55,7 +67,7 @@ function App() {
 
         <Main numberOfreels={numberOfreels} reelPosition={reelPosition} />
       </div>
-      <Button translateReels={translateReels} />
+      <Button translateReels={translateReels} disable={buttonChanged} />
     </>
   )
 }
