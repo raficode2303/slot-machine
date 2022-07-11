@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Wrapper = styled.main`
   background-color: green;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
 
   height: 600px;
   gap: 1px;
@@ -18,8 +18,9 @@ export const Reel = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transform: translateY(${(props) => props.reelPosition}px);
   /* overflow: hidden; */
-  z-index: 999;
+  /* z-index: 999; */
 `
 
 export const SymbolImg = styled.img`

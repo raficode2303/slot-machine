@@ -1,9 +1,9 @@
 import React from 'react'
 import { Wrapper, Content } from './Button.styles'
 
-export const Button = ({ changeImages }) => {
+export const Button = ({ translateReels }) => {
   return (
-    <Wrapper onClick={changeImages}>
+    <Wrapper onClick={translateReels}>
       <Content>press to play!</Content>
     </Wrapper>
   )
