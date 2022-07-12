@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
 
   *, *::before, *::after {
     box-sizing: border-box;
+    user-select: none;
   }
 
   h2{text-align: center;}

@@ -43,3 +43,13 @@ export function shuffleArray(array) {
   console.log('return new array:', newArray)
   return newArray
 }
+
+// credit: https://shaquillegalimba.medium.com/how-to-import-multiple-images-in-react-1936efeeae7b
+export function importSounds() {
+  const r = require.context('./sounds', false, /\.(mp3|wav)$/)
+  let sounds = {}
+  r.keys().forEach((item, index) => {
+    sounds[item.replace('./', '')] = r(item)
+  })
+  return sounds
+}
