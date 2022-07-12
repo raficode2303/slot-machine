@@ -1,4 +1,4 @@
-// how to import image dymianclly
+// how to import image dymianclly??? - require.context$
 
 import React from 'react'
 import { LogoBackgImage } from './Header.styles'

@@ -1,12 +1,14 @@
 // start 07/07/2022, 11:35
 // == TODO TODAY ==
-// - add sounds: app start, when press button
 // - useContext
+
+// - all reels need to stop spin at diffrent times
+// - show winner alert
 
 // === TODO NEXT ==
 // - make - line at the middle of the second symbol
 // add dashboard
-// add music
+// add all sounds
 // - show alert when winner
 // useContext, useMemo, useReducer, React Router v6
 // use carucella 3d??
@@ -28,18 +30,20 @@ import { importSounds } from './helpers'
 
 // audio
 const sounds = importSounds()
-
 console.log('sounds:', sounds)
+
+// createContext
+export const Context = React.createContext()
 
 function App() {
   const [loading, setLoading] = React.useState(true)
   const [numberOfreels, setNumberOfreels] = React.useState(3)
-  const [buttonChanged, setButtonChanged] = React.useState(false)
+  const [buttonChanged, setButtonChanged] = React.useState(() => false)
   const [audioStart, setAudioStart] = React.useState(
     () => new Audio(Object.values(sounds)[0])
   )
+
   const [reelPosition, setReelPosition] = React.useState(() => 0)
-  const [timesTorun, setTimesTorun] = React.useState(() => 100)
 
   React.useEffect(() => {
     console.log('reelPosition at useEffect: ', reelPosition)
@@ -57,8 +61,7 @@ function App() {
 
       console.log(
         'Math.abs(reelPosition), timesTorun: ',
-        Math.abs(reelPosition),
-        timesTorun
+        Math.abs(reelPosition)
       )
     }, 10)
     return () => clearInterval(reelsSpinInterval)
@@ -71,16 +74,17 @@ function App() {
   }
   console.log('reelPosition: ', reelPosition)
   return (
-    <>
+    <Context.Provider
+      value={{ numberOfreels, reelPosition, buttonChanged, translateReels }}
+    >
       <GlobalStyle />
       <div className='app'>
         <Header bcgimage={logo} />
-
-        <Main numberOfreels={numberOfreels} reelPosition={reelPosition} />
+        <Main />
       </div>
-      <Button translateReels={translateReels} disable={buttonChanged} />
+      <Button />
       <h2>One-Armed Bandit</h2>
-    </>
+    </Context.Provider>
   )
 }
 
