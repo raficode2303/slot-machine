@@ -1,5 +1,3 @@
-import { useContext } from 'react'
-
 // components
 import { Wrapper, Reel, SymbolImg } from './Main.styles'
 import { Symbols } from '../../helpers'
@@ -7,13 +5,14 @@ import { Symbols } from '../../helpers'
 // unike key
 import { nanoid } from 'nanoid'
 
-// Context
-import { Context } from '../../App'
+// GlobalContext
+import { useGlobalContext } from '../../Context'
 
 console.log(Symbols)
 
 export const Main = () => {
-  const { reelPosition, numberOfreels } = useContext(Context)
+  const { reelPosition, numberOfreels = 1 } = useGlobalContext()
+  console.log('numberOfreels is:', numberOfreels)
 
   const numberOfreelsArray = [...Array(numberOfreels).keys()]
   console.log('numberOfReels', numberOfreels)

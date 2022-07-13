@@ -1,10 +1,10 @@
 import { useContext } from 'react'
 import { PlayButton } from './Button.styles'
 // Context
-import { Context } from '../../App'
+import { useGlobalContext } from '../../Context'
 
 export const Button = () => {
-  const { buttonChanged, translateReels } = useContext(Context)
+  const { buttonChanged, translateReels } = useGlobalContext()
   console.log('disable?:', buttonChanged)
   return (
     <PlayButton

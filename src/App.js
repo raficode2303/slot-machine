@@ -1,9 +1,9 @@
 // start 07/07/2022, 11:35
 // == TODO TODAY ==
-// - useContext
-
 // - all reels need to stop spin at diffrent times
 // - show winner alert
+
+// add screen and buttons
 
 // === TODO NEXT ==
 // - make - line at the middle of the second symbol
@@ -11,10 +11,10 @@
 // add all sounds
 // - show alert when winner
 // useContext, useMemo, useReducer, React Router v6
-// use carucella 3d??
+// FTA=FirstTryAlone!: use carucella 3d?? slider-setup: ?? https://youtu.be/a_7Z7C_JCyo?t=19579
 // make reels curve
 
-import React from 'react'
+import { useEffect } from 'react'
 
 // Logo image
 import logo from './images/logo.png'
@@ -23,29 +23,18 @@ import { Header } from './components/Header'
 import { Button } from './components/Button'
 import { Main } from './components/Main'
 
-// GlobalStyle
+// Style
 import { GlobalStyle } from './GlobalStyles.styles'
-// helpers
-import { importSounds } from './helpers'
 
-// audio
-const sounds = importSounds()
-console.log('sounds:', sounds)
-
-// createContext
-export const Context = React.createContext()
+// Context
+import { useGlobalContext } from './Context'
 
 function App() {
-  const [loading, setLoading] = React.useState(true)
-  const [numberOfreels, setNumberOfreels] = React.useState(3)
-  const [buttonChanged, setButtonChanged] = React.useState(() => false)
-  const [audioStart, setAudioStart] = React.useState(
-    () => new Audio(Object.values(sounds)[0])
-  )
+  const { reelPosition, buttonChanged, setReelPosition, setButtonChanged } =
+    useGlobalContext()
+  console.log('reelPosition: ', reelPosition)
 
-  const [reelPosition, setReelPosition] = React.useState(() => 0)
-
-  React.useEffect(() => {
+  useEffect(() => {
     console.log('reelPosition at useEffect: ', reelPosition)
     if ((reelPosition === 0 && !buttonChanged) || !buttonChanged) {
       return
@@ -67,16 +56,9 @@ function App() {
     return () => clearInterval(reelsSpinInterval)
   }, [buttonChanged, reelPosition])
 
-  const translateReels = () => {
-    console.log('enter RotateReelsRotateReels')
-    setButtonChanged(true)
-    audioStart.play()
-  }
   console.log('reelPosition: ', reelPosition)
   return (
-    <Context.Provider
-      value={{ numberOfreels, reelPosition, buttonChanged, translateReels }}
-    >
+    <>
       <GlobalStyle />
       <div className='app'>
         <Header bcgimage={logo} />
@@ -84,7 +66,7 @@ function App() {
       </div>
       <Button />
       <h2>One-Armed Bandit</h2>
-    </Context.Provider>
+    </>
   )
 }
 
