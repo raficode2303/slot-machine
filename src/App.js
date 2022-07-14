@@ -1,17 +1,19 @@
 // start 07/07/2022, 11:35
 // == TODO TODAY ==
-// - all reels need to stop spin at diffrent times
+// - all reels stop  to spin at diffrent times - using css trnaslateY custom value
 // - show winner alert
+// - stop
 
 // add screen and buttons
+// TOFIX: WHY reels spin time is different depence on the amount AND NOT FIXED?
 
 // === TODO NEXT ==
 // - make - line at the middle of the second symbol
 // add dashboard
 // add all sounds
 // - show alert when winner
-// useContext, useMemo, useReducer, React Router v6
-// FTA=FirstTryAlone!: use carucella 3d?? slider-setup: ?? https://youtu.be/a_7Z7C_JCyo?t=19579
+// useContext, useMemo, useReducer, React Router v6, useNavigate
+// FTA=FirstTryAlone!: use carucella 3d??, felx-reverse??, slider-setup: ?? https://youtu.be/a_7Z7C_JCyo?t=19579
 // make reels curve
 
 import { useEffect } from 'react'
@@ -27,7 +29,9 @@ import { Main } from './components/Main'
 import { GlobalStyle } from './GlobalStyles.styles'
 
 // Context
-import { useGlobalContext } from './Context'
+import { useGlobalContext } from './context'
+
+const MAXSPIN = 2400
 
 function App() {
   const { reelPosition, buttonChanged, setReelPosition, setButtonChanged } =
@@ -41,17 +45,13 @@ function App() {
     }
 
     const reelsSpinInterval = setInterval(() => {
-      if (Math.abs(reelPosition) < 2400) setReelPosition((prev) => prev - 50)
+      if (Math.abs(reelPosition) < MAXSPIN) setReelPosition((prev) => prev - 50)
       else {
         clearInterval(reelsSpinInterval)
         setButtonChanged(false)
-        setReelPosition(0)
       }
 
-      console.log(
-        'Math.abs(reelPosition), timesTorun: ',
-        Math.abs(reelPosition)
-      )
+      console.log('Math.abs(reelPosition): ', Math.abs(reelPosition))
     }, 10)
     return () => clearInterval(reelsSpinInterval)
   }, [buttonChanged, reelPosition])

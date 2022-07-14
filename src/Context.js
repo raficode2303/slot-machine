@@ -5,7 +5,8 @@ import { importSounds } from './helpers'
 const sounds = importSounds()
 console.log('sounds:', sounds)
 
-export const Context = createContext()
+// no need too export - we use GlobalContext custom hook
+const Context = createContext()
 
 export const SlotContextProvider = ({ children }) => {
   console.log('osunds at Context: ', sounds)
@@ -21,6 +22,9 @@ export const SlotContextProvider = ({ children }) => {
     console.log('enter RotateReelsRotateReels')
     setButtonChanged(true)
     audioStart.play()
+    // for now the reel start always from the sampe position
+    // need to change this that it will continue to spin from the last stop
+    setReelPosition(0)
   }
   console.log('reelPosition at Context.js: ', reelPosition)
   console.log('audioStart at Context.js: ', audioStart)
@@ -29,7 +33,7 @@ export const SlotContextProvider = ({ children }) => {
       value={{
         reelPosition,
         buttonChanged,
-        // numberOfreels,
+        numberOfreels,
         translateReels,
         setReelPosition,
         setButtonChanged,
@@ -40,4 +44,12 @@ export const SlotContextProvider = ({ children }) => {
   )
 }
 // custom Hook
-export const useGlobalContext = () => useContext(Context)
+export const useGlobalContext = () => {
+  const context = useContext(Context)
+  console.log('context:', context)
+  // credit for the if check: https://kentcdodds.com/blog/how-to-use-react-context-effectively
+  if (context === undefined) {
+    throw new Error('useCount must be used within a SlotContextProvider')
+  }
+  return context
+}

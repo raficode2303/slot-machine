@@ -1,7 +1,7 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 // Global Context wrap App component!
-import { SlotContextProvider } from './Context'
+import { SlotContextProvider } from './context'
 // App
 import App from './App'
 

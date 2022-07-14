@@ -18,7 +18,15 @@ export const Reel = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transform: translateY(${(props) => props.reelPosition}px);
+  transform: translateY(
+    ${({ reelPosition, maxPosition }) => {
+      console.log('maxPosition: ', maxPosition)
+      console.log('reelPosition: ', reelPosition)
+      return maxPosition < reelPosition
+        ? reelPosition + 'px'
+        : maxPosition + 'px'
+    }}
+  );
   /* overflow: hidden; */
   /* z-index: 999; */
 `

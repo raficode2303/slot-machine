@@ -15,7 +15,6 @@ export const GlobalStyle = createGlobalStyle`
 
   .app {
     max-width: 800px;
-    background-color: yellow;
     outline: 10px solid red;
     margin: 0 auto;
   }

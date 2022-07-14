@@ -1,7 +1,6 @@
-import { useContext } from 'react'
 import { PlayButton } from './Button.styles'
 // Context
-import { useGlobalContext } from '../../Context'
+import { useGlobalContext } from '../../context'
 
 export const Button = () => {
   const { buttonChanged, translateReels } = useGlobalContext()
