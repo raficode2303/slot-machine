@@ -1,19 +1,16 @@
 // start 07/07/2022, 11:35
 // == TODO TODAY ==
-// - all reels stop  to spin at diffrent times - using css trnaslateY custom value
+// - add payline at the middle
 // - show winner alert
-// - stop
+//
+// - add dashboard - screen of needed buttons
 
-// add screen and buttons
-// TOFIX: WHY reels spin time is different depence on the amount AND NOT FIXED?
+// TOFIX: WHY the reels spin time is different depence on the amount AND NOT FIXED?
 
 // === TODO NEXT ==
-// - make - line at the middle of the second symbol
-// add dashboard
 // add all sounds
-// - show alert when winner
-// useContext, useMemo, useReducer, React Router v6, useNavigate
-// FTA=FirstTryAlone!: use carucella 3d??, felx-reverse??, slider-setup: ?? https://youtu.be/a_7Z7C_JCyo?t=19579
+// useMemo, useReducer, React Router v6, useNavigate
+// FTA=FirstTryAlone!: use carucella 3d??, felx-reverse??, slider-setup App: ?? https://youtu.be/a_7Z7C_JCyo?t=19579
 // make reels curve
 
 import { useEffect } from 'react'
