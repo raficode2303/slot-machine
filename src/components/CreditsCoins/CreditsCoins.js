@@ -1,7 +1,16 @@
 import React from 'react'
+import { Wrapper, Content } from './CreditsCoins.styles'
 
 function CreditsCoins() {
-  return <div>CreditsCoins: WINNER PAID, CREDITS, COINS PLAYED</div>
+  return (
+    <>
+      <Wrapper>
+        <Content></Content>
+        <Content>200</Content>
+        <Content>3</Content>
+      </Wrapper>
+    </>
+  )
 }
 
 export default CreditsCoins
