@@ -69,7 +69,7 @@ function App() {
       {/* <Header bcgimage={logo} /> */}
       {/* <Main /> */}
       {/* </div> */}
-      {/* <Button /> */}
+      <Button />
       <CreditsCoins />
       <h2>One-Armed Bandit</h2>
     </>
