@@ -1,17 +1,24 @@
 // start 07/07/2022, 11:35
 // == TODO TODAY ==
 // - add payline at the middle
-// - show winner alert
-//
 // - add dashboard - screen of needed buttons
 
+// == TODO NEXT ==
+// - create CteditsCoins component
+// - create BetButtons component
+// - show winner options table
+// - create the logic for winners/losers options
+// - show winner alert
+
 // TOFIX: WHY the reels spin time is different depence on the amount AND NOT FIXED?
+// MAIN-CHALLENGE: make smooth slot machine with the same speed and different stop times
 
 // === TODO NEXT ==
 // add all sounds
 // useMemo, useReducer, React Router v6, useNavigate
-// FTA=FirstTryAlone!: use carucella 3d??, felx-reverse??, slider-setup App: ?? https://youtu.be/a_7Z7C_JCyo?t=19579
+// FTA=FirstTryAlone!: flex-reverse??, use carucella 3d??.
 // make reels curve
+// merge reels amount select and visible Symbols option from carousel/slider branch
 
 import { useEffect } from 'react'
 

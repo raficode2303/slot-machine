@@ -12,36 +12,37 @@ console.log(Symbols)
 const MAXSPIN = 2400
 const REVERSE = -1
 const MAXSPIN_REVERSE = MAXSPIN * REVERSE
-
+/* need it??
+const reelsStopDistance = MAXSPIN / numberOfreels
 const getReelPositionsEnd = (numberOfreels) => {
-  const reelsStopDistance = MAXSPIN / numberOfreels
   let ArrayOfReelPositionsEnd = []
   for (let i = 0; i < numberOfreels - 1; i++) {
     ArrayOfReelPositionsEnd[i] =
-      REVERSE * (reelsStopDistance + i * reelsStopDistance)
+    REVERSE * (reelsStopDistance + i * reelsStopDistance)
   }
   ArrayOfReelPositionsEnd.push(MAXSPIN_REVERSE)
   console.log('ArrayOfReelPositionsEnd: ', ArrayOfReelPositionsEnd)
   return ArrayOfReelPositionsEnd
 }
+*/
 
 export const Main = () => {
   const { reelPosition, numberOfreels = 1 } = useGlobalContext()
-  let reelsPositionsEndArray = getReelPositionsEnd(1)
+  // let reelsPositionsEndArray = getReelPositionsEnd(1)
   console.log('numberOfreels is:', numberOfreels)
 
-  // const numberOfreelsArray = [...Array(4).keys()]
+  const numberOfreelsArray = [...Array(numberOfreels).keys()]
   console.log('numberOfReels', numberOfreels)
   console.log('reelPosition at Main: ', reelPosition)
   return (
     <>
       <Wrapper className='reels-container'>
-        {reelsPositionsEndArray.map((_reel, index) => (
+        {numberOfreelsArray.map((_reel, index) => (
           <Reel
             className='reel'
             key={nanoid()}
             reelPosition={reelPosition}
-            maxPosition={reelsPositionsEndArray[index]}
+            numberOfreels={numberOfreels}
           >
             {Symbols.map((symbol) => (
               <SymbolImg key={nanoid()} src={symbol} />
