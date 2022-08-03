@@ -1,4 +1,4 @@
-import { useState, createContext, useContext } from 'react'
+import { useState, createContext, useContext, useRef } from 'react'
 // helpers
 import { importSounds } from './helpers'
 // audio
@@ -14,14 +14,12 @@ export const SlotContextProvider = ({ children }) => {
   const [numberOfreels, setNumberOfreels] = useState(3)
   const [buttonChanged, setButtonChanged] = useState(() => false)
   const [reelPosition, setReelPosition] = useState(() => 0)
-  const [audioStart, setAudioStart] = useState(
-    () => new Audio(Object.values(sounds)[0])
-  )
+  const audioStart = useRef(new Audio(Object.values(sounds)[0]))
 
   const translateReels = () => {
     console.log('enter RotateReelsRotateReels')
     setButtonChanged(true)
-    audioStart.play()
+    audioStart.current.play()
     // for now the reel start always from the sampe position
     // need to change this that it will continue to spin from the last stop
     setReelPosition(0)
