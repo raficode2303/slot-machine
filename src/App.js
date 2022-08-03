@@ -34,6 +34,7 @@ import { GlobalStyle } from './GlobalStyles.styles'
 
 // Context
 import { useGlobalContext } from './context'
+import CreditsCoins from './components/CreditsCoins/CreditsCoins'
 
 const MAXSPIN = 2400
 
@@ -64,11 +65,12 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <div className='app'>
-        <Header bcgimage={logo} />
-        <Main />
-      </div>
-      <Button />
+      {/* <div className='app'> */}
+      {/* <Header bcgimage={logo} /> */}
+      {/* <Main /> */}
+      {/* </div> */}
+      {/* <Button /> */}
+      <CreditsCoins />
       <h2>One-Armed Bandit</h2>
     </>
   )
