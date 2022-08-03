@@ -1,13 +1,15 @@
 import React from 'react'
 import { Wrapper, Content } from './CreditsCoins.styles'
+import { nanoid } from 'nanoid'
 
+const screensAmount = [...Array(3 + 1).keys()].slice(1)
 function CreditsCoins() {
   return (
     <>
       <Wrapper>
-        <Content></Content>
-        <Content>200</Content>
-        <Content>3</Content>
+        {screensAmount.map((screenID) => (
+          <Content key={nanoid()}>{screenID}</Content>
+        ))}
       </Wrapper>
     </>
   )
