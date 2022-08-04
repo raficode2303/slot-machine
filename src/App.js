@@ -20,7 +20,7 @@
 // make reels curve
 // merge reels amount select and visible Symbols option from carousel/slider branch
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 // Logo image
 import logo from './images/logo.png'
@@ -34,7 +34,8 @@ import { GlobalStyle } from './GlobalStyles.styles'
 
 // Context
 import { useGlobalContext } from './context'
-import CreditsCoins from './components/CreditsCoins/CreditsCoins'
+import CreditsCoins from './components/CreditsCoins/CreditsCoinsScreen'
+import CreditsCoinsScreen from './components/CreditsCoins/CreditsCoinsScreen'
 
 const MAXSPIN = 2400
 
@@ -42,6 +43,13 @@ function App() {
   const { reelPosition, buttonChanged, setReelPosition, setButtonChanged } =
     useGlobalContext()
   console.log('reelPosition: ', reelPosition)
+
+  const screensData = useRef([
+    { name: 'winner paid', value: 15, size: undefined },
+    { name: 'credits', value: 1049, size: undefined },
+    { name: 'coins played', value: null, size: 'fit-content' },
+    { name: 'banana', value: 999 },
+  ])
 
   useEffect(() => {
     console.log('reelPosition at useEffect: ', reelPosition)
@@ -69,8 +77,8 @@ function App() {
       {/* <Header bcgimage={logo} /> */}
       {/* <Main /> */}
       {/* </div> */}
-      <Button />
-      <CreditsCoins />
+      {/* <Button /> */}
+      <CreditsCoinsScreen screensData={screensData.current} />
       <h2>One-Armed Bandit</h2>
     </>
   )
