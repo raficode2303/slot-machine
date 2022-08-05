@@ -24,18 +24,16 @@ import { useEffect, useRef } from 'react'
 
 // Logo image
 import logo from './images/logo.png'
+// Style
+import { GlobalStyle } from './GlobalStyles.styles'
+// Context
+import { useGlobalContext } from './context'
 // components
 import { Header } from './components/Header'
 import { Button } from './components/Button'
 import { Main } from './components/Main'
 
-// Style
-import { GlobalStyle } from './GlobalStyles.styles'
-
-// Context
-import { useGlobalContext } from './context'
-import CreditsCoins from './components/CreditsCoins/CreditsCoinsScreen'
-import CreditsCoinsScreen from './components/CreditsCoins/CreditsCoinsScreen'
+import CreditsCoinsScreen from './components/CreditsCoinsScreen/CreditsCoinsScreen'
 
 const MAXSPIN = 2400
 
