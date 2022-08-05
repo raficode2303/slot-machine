@@ -73,12 +73,12 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      {/* <div className='app'> */}
-      {/* <Header bcgimage={logo} /> */}
-      {/* <Main /> */}
-      {/* </div> */}
-      {/* <Button /> */}
-      <CreditsCoinsScreen screensData={screensData.current} />
+      <div className='app'>
+        <Header bcgimage={logo} />
+        <Main />
+        <CreditsCoinsScreen screensData={screensData.current} />
+      </div>
+      <Button />
       <h2>One-Armed Bandit</h2>
     </>
   )

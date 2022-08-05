@@ -7,7 +7,6 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: end;
   background-color: black;
-  max-width: 95%;
   min-height: 100px;
   padding: 10px 5px;
 `
