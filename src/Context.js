@@ -14,6 +14,15 @@ export const SlotContextProvider = ({ children }) => {
   const [numberOfreels, setNumberOfreels] = useState(3)
   const [buttonChanged, setButtonChanged] = useState(() => false)
   const [reelPosition, setReelPosition] = useState(() => 0)
+
+  const [screensData, setScreensData] = useState([
+    { name: 'winner paid', value: 15, size: undefined },
+    { name: 'credits', value: 1049, size: undefined },
+    { name: 'coins played', value: null, size: 'fit-content' },
+    { name: 'banana', value: 999 },
+  ])
+
+  // audio with Ref
   const audioStart = useRef(new Audio(Object.values(sounds)[0]))
 
   const translateReels = () => {
@@ -32,9 +41,11 @@ export const SlotContextProvider = ({ children }) => {
         reelPosition,
         buttonChanged,
         numberOfreels,
+        screensData,
         translateReels,
         setReelPosition,
         setButtonChanged,
+        setScreensData,
       }}
     >
       {children}

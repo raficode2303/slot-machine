@@ -1,12 +1,15 @@
 // start 07/07/2022, 11:35
 // == TODO TODAY ==
-// - create BetButtons component
-// - add payline at the middle
+// - make buttons to effect screens correctly
 
 // == TODO NEXT ==
+// - add payline at the middle
 // - show winner options table
-// - create the logic for winners/losers options
 // - show winner alert
+// - create the logic for winners/losers options
+// -- make 'spin reels' button Neon
+// add joystick for 'spin reels'
+// add sounds
 
 // TOFIX: WHY the reels spin time is different depence on the amount AND NOT FIXED?
 // MAIN-CHALLENGE: make smooth slot machine with the same speed and different stop times
@@ -18,7 +21,7 @@
 // make reels curve
 // merge reels amount select and visible Symbols option from carousel/slider branch
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useState } from 'react'
 
 // Logo image
 import logo from './images/logo.png'
@@ -39,16 +42,15 @@ const MAXSPIN = 2400
 const buttons = ['bet one', 'bet max', 'spin reels']
 
 function App() {
-  const { reelPosition, buttonChanged, setReelPosition, setButtonChanged } =
-    useGlobalContext()
+  const {
+    reelPosition,
+    buttonChanged,
+    setReelPosition,
+    setButtonChanged,
+    screensData,
+    setScreensData,
+  } = useGlobalContext()
   console.log('reelPosition: ', reelPosition)
-
-  const screensData = useRef([
-    { name: 'winner paid', value: 15, size: undefined },
-    { name: 'credits', value: 1049, size: undefined },
-    { name: 'coins played', value: null, size: 'fit-content' },
-    { name: 'banana', value: 999 },
-  ])
 
   useEffect(() => {
     console.log('reelPosition at useEffect: ', reelPosition)
@@ -75,8 +77,12 @@ function App() {
       <div className='app'>
         <Header bcgimage={logo} />
         <Main />
-        <CreditsCoinsScreen screensData={screensData.current} />
-        <BetButtons buttons={buttons} />
+        <CreditsCoinsScreen screensData={screensData} />
+        <BetButtons
+          buttons={buttons}
+          screensData={screensData}
+          setScreensData={setScreensData}
+        />
       </div>
       <Button />
       <h2>One-Armed Bandit</h2>
