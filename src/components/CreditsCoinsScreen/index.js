@@ -2,7 +2,7 @@ import React from 'react'
 import { Wrapper, Content } from './CreditsCoinsScreen.styles'
 import { nanoid } from 'nanoid'
 
-function CreditsCoinsScreen({ screensData }) {
+export function CreditsCoinsScreen({ screensData }) {
   return (
     <>
       <Wrapper className='screen'>
@@ -15,5 +15,3 @@ function CreditsCoinsScreen({ screensData }) {
     </>
   )
 }
-
-export default CreditsCoinsScreen

@@ -31,9 +31,12 @@ import { Header } from './components/Header'
 import { Button } from './components/Button'
 import { Main } from './components/Main'
 
-import CreditsCoinsScreen from './components/CreditsCoinsScreen/CreditsCoinsScreen'
+import { CreditsCoinsScreen } from './components/CreditsCoinsScreen'
+import { BetButtons } from './components/BetButtons'
 
+// const
 const MAXSPIN = 2400
+const buttons = ['bet one', 'bet max', 'spin reels']
 
 function App() {
   const { reelPosition, buttonChanged, setReelPosition, setButtonChanged } =
@@ -73,6 +76,7 @@ function App() {
         <Header bcgimage={logo} />
         <Main />
         <CreditsCoinsScreen screensData={screensData.current} />
+        <BetButtons buttons={buttons} />
       </div>
       <Button />
       <h2>One-Armed Bandit</h2>
