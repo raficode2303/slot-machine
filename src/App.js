@@ -1,11 +1,9 @@
 // start 07/07/2022, 11:35
 // == TODO TODAY ==
+// - create BetButtons component
 // - add payline at the middle
-// - add dashboard - screen of needed buttons
 
 // == TODO NEXT ==
-// - create CteditsCoins component
-// - create BetButtons component
 // - show winner options table
 // - create the logic for winners/losers options
 // - show winner alert
