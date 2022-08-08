@@ -16,7 +16,7 @@ export const Content = styled.div`
     return props.size ? 'center' : 'auto'
   }};
   width: ${(props) => {
-    console.log(props)
+    // console.log(props)
 
     return props.size ? props.size : 'auto'
   }};

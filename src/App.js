@@ -1,6 +1,9 @@
 // start 07/07/2022, 11:35
 // == TODO TODAY ==
-// - make buttons to effect screens correctly
+// - make buttons to effect screens correctly - DONE.
+// need to make screen to know if the value is after updating credits or before
+// need to disable button after bet
+// need to update winner paid when win
 
 // == TODO NEXT ==
 // - add payline at the middle
@@ -45,10 +48,10 @@ function App() {
   const {
     reelPosition,
     buttonChanged,
+    coinsPlayed,
+    screensData,
     setReelPosition,
     setButtonChanged,
-    screensData,
-    setScreensData,
   } = useGlobalContext()
   console.log('reelPosition: ', reelPosition)
 
@@ -64,25 +67,18 @@ function App() {
         clearInterval(reelsSpinInterval)
         setButtonChanged(false)
       }
-
-      console.log('Math.abs(reelPosition): ', Math.abs(reelPosition))
     }, 10)
     return () => clearInterval(reelsSpinInterval)
   }, [buttonChanged, reelPosition])
 
-  console.log('reelPosition: ', reelPosition)
   return (
     <>
       <GlobalStyle />
       <div className='app'>
         <Header bcgimage={logo} />
-        <Main />
+        {/* <Main /> */}
         <CreditsCoinsScreen screensData={screensData} />
-        <BetButtons
-          buttons={buttons}
-          screensData={screensData}
-          setScreensData={setScreensData}
-        />
+        <BetButtons buttons={buttons} />
       </div>
       <Button />
       <h2>One-Armed Bandit</h2>

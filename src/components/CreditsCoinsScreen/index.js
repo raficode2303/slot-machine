@@ -3,7 +3,7 @@ import { Wrapper, Content } from './CreditsCoinsScreen.styles'
 import { nanoid } from 'nanoid'
 
 export function CreditsCoinsScreen({ screensData }) {
-  // console.log('screensData: ', screensData)
+  console.log('screensData at CreditsCoinsScreen: ', screensData)
   return (
     <>
       <Wrapper className='screen'>

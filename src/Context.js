@@ -1,4 +1,4 @@
-import { useState, createContext, useContext, useRef } from 'react'
+import { useState, createContext, useContext, useRef, useEffect } from 'react'
 // helpers
 import { importSounds } from './helpers'
 // audio
@@ -15,13 +15,35 @@ export const SlotContextProvider = ({ children }) => {
   const [buttonChanged, setButtonChanged] = useState(() => false)
   const [reelPosition, setReelPosition] = useState(() => 0)
 
-  const [screensData, setScreensData] = useState([
-    { name: 'winner paid', value: 15, size: undefined },
-    { name: 'credits', value: 1049, size: undefined },
-    { name: 'coins played', value: null, size: 'fit-content' },
-    { name: 'banana', value: 999 },
-  ])
+  const [coinsPlayed, setCoinsPlayed] = useState({
+    name: 'coins played',
+    value: null,
+    size: 'fit-content',
+  })
+  const [winnerPaid, setWinnerPaid] = useState({
+    name: 'winner paid',
+    value: 15,
+    size: undefined,
+  })
+  const [credits, setCredits] = useState({
+    name: 'credits',
+    value: winnerPaid.value - coinsPlayed.value,
+    size: undefined,
+  })
+  const [banana, setBanana] = useState({ name: 'banana', value: 999 })
+  const [screensData, setScreensData] = useState([])
 
+  useEffect(() => {
+    setCredits({
+      name: 'credits',
+      value: winnerPaid.value - coinsPlayed.value,
+      size: undefined,
+    })
+  }, [coinsPlayed, winnerPaid])
+
+  useEffect(() => {
+    setScreensData([winnerPaid, credits, coinsPlayed, banana])
+  }, [coinsPlayed, winnerPaid, credits])
   // audio with Ref
   const audioStart = useRef(new Audio(Object.values(sounds)[0]))
 
@@ -33,19 +55,21 @@ export const SlotContextProvider = ({ children }) => {
     // need to change this that it will continue to spin from the last stop
     setReelPosition(0)
   }
-  console.log('reelPosition at Context.js: ', reelPosition)
-  console.log('audioStart at Context.js: ', audioStart)
+  console.log(coinsPlayed, setCoinsPlayed)
   return (
     <Context.Provider
       value={{
         reelPosition,
         buttonChanged,
         numberOfreels,
+        coinsPlayed,
         screensData,
         translateReels,
         setReelPosition,
         setButtonChanged,
+        setCoinsPlayed,
         setScreensData,
+        setWinnerPaid,
       }}
     >
       {children}
