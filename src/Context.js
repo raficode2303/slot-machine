@@ -1,3 +1,5 @@
+// ==TODO==:make all buttons at 1 state
+
 import { useState, createContext, useContext, useRef, useEffect } from 'react'
 // helpers
 import { importSounds } from './helpers'
@@ -22,32 +24,28 @@ export const SlotContextProvider = ({ children }) => {
   })
   const [winnerPaid, setWinnerPaid] = useState({
     name: 'winner paid',
-    value: 15,
+    value: null,
     size: undefined,
   })
-  const [credits, setCredits] = useState({
-    name: 'credits',
-    value: winnerPaid.value - coinsPlayed.value,
-    size: undefined,
-  })
-  const [banana, setBanana] = useState({ name: 'banana', value: 999 })
+  const [credits, setCredits] = useState({})
+
   const [screensData, setScreensData] = useState([])
 
   useEffect(() => {
     setCredits({
       name: 'credits',
-      value: winnerPaid.value - coinsPlayed.value,
+      value: 200 + winnerPaid.value - coinsPlayed.value,
       size: undefined,
     })
   }, [coinsPlayed, winnerPaid])
 
   useEffect(() => {
-    setScreensData([winnerPaid, credits, coinsPlayed, banana])
+    setScreensData([winnerPaid, credits, coinsPlayed])
   }, [coinsPlayed, winnerPaid, credits])
   // audio with Ref
   const audioStart = useRef(new Audio(Object.values(sounds)[0]))
 
-  const translateReels = () => {
+  const rollReels = () => {
     console.log('enter RotateReelsRotateReels')
     setButtonChanged(true)
     audioStart.current.play()
@@ -64,7 +62,7 @@ export const SlotContextProvider = ({ children }) => {
         numberOfreels,
         coinsPlayed,
         screensData,
-        translateReels,
+        rollReels,
         setReelPosition,
         setButtonChanged,
         setCoinsPlayed,

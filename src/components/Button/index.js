@@ -3,13 +3,13 @@ import { PlayButton } from './Button.styles'
 import { useGlobalContext } from '../../context'
 
 export const Button = () => {
-  const { buttonChanged, translateReels } = useGlobalContext()
+  const { buttonChanged, rollReels } = useGlobalContext()
   console.log('disable?:', buttonChanged)
   return (
     <PlayButton
       defaultValue='press to play!'
       disabled={buttonChanged}
-      onClick={translateReels}
+      onClick={rollReels}
     />
   )
 }

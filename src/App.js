@@ -4,6 +4,8 @@
 // need to make screen to know if the value is after updating credits or before
 // need to disable button after bet
 // need to update winner paid when win
+// applay memeo so symbols not reload everytime bet changed
+// remove Button component
 
 // == TODO NEXT ==
 // - add payline at the middle
@@ -76,11 +78,10 @@ function App() {
       <GlobalStyle />
       <div className='app'>
         <Header bcgimage={logo} />
-        {/* <Main /> */}
+        <Main />
         <CreditsCoinsScreen screensData={screensData} />
         <BetButtons buttons={buttons} />
       </div>
-      <Button />
       <h2>One-Armed Bandit</h2>
     </>
   )

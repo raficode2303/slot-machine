@@ -3,8 +3,16 @@ import { useGlobalContext } from '../../context'
 import { Wrapper, Content } from './BetButtons.styles'
 
 export const BetButtons = ({ buttons }) => {
-  const { coinsPlayed, setCoinsPlayed, setWinnerPaid } = useGlobalContext()
+  const {
+    coinsPlayed,
+    setCoinsPlayed,
+    setWinnerPaid,
+    rollReels,
+    buttonChanged,
+  } = useGlobalContext()
   const handleBet = (buttonName) => {
+    // ** TODO - make it with useReducer
+    // make buttons disable when reels roll
     switch (buttonName) {
       case 'bet one':
         setCoinsPlayed((perv) => {
@@ -18,7 +26,8 @@ export const BetButtons = ({ buttons }) => {
           (buttonName === 'spin reels' && coinsPlayed.value) ||
           (buttonName === 'bet max' && coinsPlayed.value === 3)
         ) {
-          // roll the reel
+          // roll the reels, ** make SURE that is new turn
+          rollReels()
           break
         }
         const betTimer = setInterval(() => {
@@ -27,6 +36,7 @@ export const BetButtons = ({ buttons }) => {
             // debugger
             if (perv.value >= 3) {
               clearInterval(betTimer)
+              rollReels()
               return perv
             }
             return {
@@ -39,29 +49,8 @@ export const BetButtons = ({ buttons }) => {
         // run the reels and disable buttons
         // make sure for the next to know that credits need to be minus new bet
         break
-      case 'spin reels':
-        console.log('do something', !coinsPlayed.vlaue)
-
-        const betTimer2 = setInterval(() => {
-          setCoinsPlayed((perv) => {
-            console.log(perv)
-            // debugger
-            if (perv.value >= 3) {
-              clearInterval(betTimer2)
-              return perv
-            }
-            return {
-              ...perv,
-              value: perv.value + 1,
-            }
-          })
-        }, 200)
-
-        // TODO: run the reels
-        break
       default:
         throw new Error(`there is no such button with the name: ${buttonName}`)
-        break
     }
   }
 
@@ -75,7 +64,11 @@ export const BetButtons = ({ buttons }) => {
   return (
     <Wrapper>
       {buttons.map((button) => (
-        <Content key={button} onClick={() => handleBet(button)}>
+        <Content
+          key={button}
+          onClick={() => handleBet(button)}
+          disabled={buttonChanged}
+        >
           {button}
         </Content>
       ))}

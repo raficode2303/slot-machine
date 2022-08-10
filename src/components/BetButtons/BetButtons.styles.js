@@ -6,7 +6,7 @@ const Wrapper = styled.div`
   gap: 5px;
   background-color: rgba(0, 0, 0, 0.75);
 `
-const Content = styled.div`
+const Content = styled.button`
   background-color: #fff;
   text-transform: uppercase;
   cursor: pointer;
@@ -21,6 +21,11 @@ const Content = styled.div`
   }
   :active {
     border-style: inset;
+  }
+  :disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    background-color: grey;
   }
 `
 
