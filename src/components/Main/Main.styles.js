@@ -32,7 +32,7 @@ export const Reel = styled.div`
 `
 
 export const SymbolImg = styled.img`
-  display: block;
+  /* display: block; */
   padding: 10px;
   max-width: 100%;
   /* width: 33%; */

@@ -76,13 +76,13 @@ function App() {
     <>
       <GlobalStyle />
       <div className='app'>
-        <Header bcgimage={logo} />
+        {/* <Header bcgimage={logo} /> */}
         <Main />
-        <CreditsCoinsScreen screensData={screensData} />
+        {/* <CreditsCoinsScreen screensData={screensData} /> */}
         <BetButtons buttons={buttons} />
       </div>
       <h2>One-Armed Bandit</h2>
-      <PayTable />
+      {/* <PayTable /> */}
     </>
   )
 }
