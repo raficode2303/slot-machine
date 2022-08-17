@@ -1,15 +1,12 @@
 // start 07/07/2022, 11:35
 // == TODO TODAY ==
-// - make buttons to effect screens correctly - DONE.
+// carousel-vertical
+// applay memeo/useMemo so symbols not reload everytime bet changed
 // need to make screen to know if the value is after updating credits or before
-// need to disable button after bet
 // need to update winner paid when win
-// applay memeo so symbols not reload everytime bet changed
-// remove Button component
 
 // == TODO NEXT ==
 // - add payline at the middle
-// - show winner options table
 // - show winner alert
 // - create the logic for winners/losers options
 // -- make 'spin reels' button Neon
@@ -20,7 +17,8 @@
 // MAIN-CHALLENGE: make smooth slot machine with the same speed and different stop times
 
 // === TODO NEXT ==
-// add all sounds
+// add all sounds and volume controll symbol
+// pages: best winners/players page, rare of combination, how many times combination was...
 // useMemo, useReducer, React Router v6, useNavigate
 // FTA=FirstTryAlone!: flex-reverse??, use carucella 3d??.
 // make reels curve

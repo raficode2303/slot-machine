@@ -27,6 +27,7 @@ const payTableArray = [
 export const PayTable = () => {
   return (
     <Table>
+      <caption>Pay Table</caption>
       <Tr>
         <Th></Th>
         <Th>1st</Th>

@@ -1,11 +1,14 @@
 import styled from 'styled-components'
 
 export const Table = styled.table`
-  width: 50%;
   text-align: center;
   background-image: linear-gradient(red, white, blue);
   border: 1px solid;
   border-collapse: collapse;
+  empty-cells: hide;
+  caption-side: bottom;
+
+  margin: 0 auto;
 `
 
 export const Tr = styled.tr`
