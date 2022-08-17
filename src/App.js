@@ -41,6 +41,7 @@ import { Main } from './components/Main'
 
 import { CreditsCoinsScreen } from './components/CreditsCoinsScreen'
 import { BetButtons } from './components/BetButtons'
+import { PayTable } from './components/PayTable'
 
 // const
 const MAXSPIN = 2400
@@ -83,6 +84,7 @@ function App() {
         <BetButtons buttons={buttons} />
       </div>
       <h2>One-Armed Bandit</h2>
+      <PayTable />
     </>
   )
 }
