@@ -1,6 +1,6 @@
 // start 07/07/2022, 11:35
 // == TODO TODAY ==
-// carousel-vertical
+// carousel-vertical - works, with random symbol stops, need to make it to stop at different time and different symbols
 // applay memeo/useMemo so symbols not reload everytime bet changed
 // need to make screen to know if the value is after updating credits or before
 // need to update winner paid when win
@@ -53,24 +53,26 @@ function App() {
     screensData,
     setReelPosition,
     setButtonChanged,
+    topPosition,
+    setTopPosition,
   } = useGlobalContext()
   console.log('reelPosition: ', reelPosition)
 
   useEffect(() => {
-    console.log('reelPosition at useEffect: ', reelPosition)
     if ((reelPosition === 0 && !buttonChanged) || !buttonChanged) {
       return
     }
-
     const reelsSpinInterval = setInterval(() => {
-      if (Math.abs(reelPosition) < MAXSPIN) setReelPosition((prev) => prev - 50)
+      console.log('reelPosition at useEffect: ', reelPosition)
+      console.log('topPosition at useEffect: ', topPosition)
+      if (reelPosition !== topPosition) setTopPosition((prev) => prev - 100)
       else {
         clearInterval(reelsSpinInterval)
         setButtonChanged(false)
       }
-    }, 10)
+    }, 100)
     return () => clearInterval(reelsSpinInterval)
-  }, [buttonChanged, reelPosition])
+  }, [buttonChanged, reelPosition, topPosition])
 
   return (
     <>

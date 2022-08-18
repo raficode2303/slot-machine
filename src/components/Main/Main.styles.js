@@ -10,7 +10,12 @@ export const Wrapper = styled.main`
   overflow: hidden;
 `
 
-export const Reel = styled.div`
+export const Reel = styled.div.attrs((props) => ({
+  // using the attrs method, together with a style object for frequently changed styles.
+  style: {
+    top: props.topPosition + 'px',
+  },
+}))`
   /* height: 200px; */
   border: 4px solid #333;
   background-color: rgb(110 114 117);
@@ -18,15 +23,9 @@ export const Reel = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transform: translateY(
-    ${({ reelPosition, maxPosition }) => {
-      console.log('maxPosition: ', maxPosition)
-      console.log('reelPosition: ', reelPosition)
-      return maxPosition < reelPosition
-        ? reelPosition + 'px'
-        : maxPosition + 'px'
-    }}
-  );
+
+  position: relative;
+  transition: 100ms linear;
   /* overflow: hidden; */
   /* z-index: 999; */
 `

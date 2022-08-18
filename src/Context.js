@@ -11,10 +11,12 @@ console.log('sounds:', sounds)
 const Context = createContext()
 
 export const SlotContextProvider = ({ children }) => {
-  console.log('osunds at Context: ', sounds)
+  console.log('sounds at Context: ', sounds)
   // const [loading, setLoading] = useState(true)
   const [numberOfreels, setNumberOfreels] = useState(3)
+  const [visibleSymbols, setVisibleSymbols] = useState(3)
   const [buttonChanged, setButtonChanged] = useState(() => false)
+  const [topPosition, setTopPosition] = useState(() => 0)
   const [reelPosition, setReelPosition] = useState(() => 0)
 
   const [coinsPlayed, setCoinsPlayed] = useState({
@@ -44,6 +46,8 @@ export const SlotContextProvider = ({ children }) => {
   }, [coinsPlayed, winnerPaid, credits])
   // audio with Ref
   const audioStart = useRef(new Audio(Object.values(sounds)[0]))
+  // get reelHeight from context...
+  const reelHeight = useRef(600)
 
   const rollReels = () => {
     console.log('enter RotateReelsRotateReels')
@@ -51,17 +55,26 @@ export const SlotContextProvider = ({ children }) => {
     audioStart.current.play()
     // for now the reel start always from the sampe position
     // need to change this that it will continue to spin from the last stop
-    setReelPosition(0)
+    setReelPosition(
+      // need to change random generator
+      (perv) =>
+        perv -
+        reelHeight.current *
+          (visibleSymbols + 2 + Math.floor(Math.random() * 5))
+    )
   }
   console.log(coinsPlayed, setCoinsPlayed)
   return (
     <Context.Provider
       value={{
+        topPosition,
+        visibleSymbols,
         reelPosition,
         buttonChanged,
         numberOfreels,
         coinsPlayed,
         screensData,
+        setTopPosition,
         rollReels,
         setReelPosition,
         setButtonChanged,

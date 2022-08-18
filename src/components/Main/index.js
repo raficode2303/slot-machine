@@ -7,6 +7,7 @@ import { nanoid } from 'nanoid'
 
 // GlobalContext
 import { useGlobalContext } from '../../context'
+import { useState } from 'react'
 
 console.log(Symbols)
 const MAXSPIN = 2400
@@ -27,9 +28,21 @@ const getReelPositionsEnd = (numberOfreels) => {
 */
 
 export const Main = () => {
-  const { reelPosition, numberOfreels = 1 } = useGlobalContext()
-  // let reelsPositionsEndArray = getReelPositionsEnd(1)
-  console.log('numberOfreels is:', numberOfreels)
+  const {
+    topPosition,
+    reelPosition,
+    numberOfreels = 1,
+    visibleSymbols = 1,
+  } = useGlobalContext()
+  // add visible symbols to the end of symbols
+  const [symbolsArray, setSymbolsArray] = useState(() => {
+    let symbolsWithAdd = [...Symbols]
+    for (let i = 0; i < visibleSymbols; i++) {
+      symbolsWithAdd.push(Symbols[i])
+    }
+    console.log('symbolsWithAdd is:', symbolsWithAdd)
+    return symbolsWithAdd
+  })
 
   const numberOfreelsArray = [...Array(numberOfreels).keys()]
   console.log('numberOfReels', numberOfreels)
@@ -41,10 +54,10 @@ export const Main = () => {
           <Reel
             className='reel'
             key={nanoid()}
-            reelPosition={reelPosition}
+            topPosition={topPosition % 3000}
             numberOfreels={numberOfreels}
           >
-            {Symbols.map((symbol) => (
+            {symbolsArray.map((symbol) => (
               <SymbolImg key={nanoid()} src={symbol} />
             ))}
           </Reel>
