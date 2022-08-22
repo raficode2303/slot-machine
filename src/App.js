@@ -1,7 +1,8 @@
 // start 07/07/2022, 11:35
 // == TODO TODAY ==
 // carousel-vertical - works, with random symbol stops, need to make it to stop at different time and different symbols
-// applay memeo/useMemo so symbols not reload everytime bet changed
+// not map over Symbols for every Reel
+// applay useMemo so symbols not reload everytime bet changed
 // need to make screen to know if the value is after updating credits or before
 // need to update winner paid when win
 
@@ -24,7 +25,7 @@
 // make reels curve
 // merge reels amount select and visible Symbols option from carousel/slider branch
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, memo } from 'react'
 
 // Logo image
 import logo from './images/logo.png'
@@ -39,7 +40,7 @@ import { Main } from './components/Main'
 
 import { CreditsCoinsScreen } from './components/CreditsCoinsScreen'
 import { BetButtons } from './components/BetButtons'
-import { PayTable } from './components/PayTable'
+import PayTable from './components/PayTable'
 
 // const
 const MAXSPIN = 2400
@@ -70,7 +71,7 @@ function App() {
         clearInterval(reelsSpinInterval)
         setButtonChanged(false)
       }
-    }, 100)
+    }, 10)
     return () => clearInterval(reelsSpinInterval)
   }, [buttonChanged, reelPosition, topPosition])
 
@@ -80,11 +81,11 @@ function App() {
       <div className='app'>
         {/* <Header bcgimage={logo} /> */}
         <Main />
-        {/* <CreditsCoinsScreen screensData={screensData} /> */}
+        <CreditsCoinsScreen screensData={screensData} />
         <BetButtons buttons={buttons} />
       </div>
       <h2>One-Armed Bandit</h2>
-      {/* <PayTable /> */}
+      <PayTable />
     </>
   )
 }

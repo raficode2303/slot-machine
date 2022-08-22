@@ -60,6 +60,7 @@ export const BetButtons = ({ buttons }) => {
     // 3. put winner paid to null when next turn,  after credits is updated
     console.log('you are a winner!')
   }
+  console.log('%c BetButtons reneders', 'border: solid brown')
 
   return (
     <Wrapper>

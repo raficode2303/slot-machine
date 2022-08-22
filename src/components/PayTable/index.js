@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { Table, Tr, Th, Td } from './PayTable.styles'
 
 const payTableArray = [
@@ -24,26 +24,33 @@ const payTableArray = [
   },
 ]
 
-export const PayTable = () => {
+const PayTable = () => {
+  console.log('%c PayTabele reneders', 'border: solid green')
   return (
     <Table>
       <caption>Pay Table</caption>
-      <Tr>
-        <Th></Th>
-        <Th>1st</Th>
-        <Th>2nd</Th>
-        <Th>3rd</Th>
-        <Th></Th>
-      </Tr>
-      {payTableArray.map((payLine) => (
-        <Tr key={payLine.comb}>
-          <Td>{payLine.comb}</Td>
-          <Td>{payLine.prize}</Td>
-          <Td>{payLine.prize * 2}</Td>
-          <Td>{payLine.prize * 5}</Td>
-          <Td>{payLine.comb}</Td>
+      <thead>
+        <Tr>
+          <Th></Th>
+          <Th>1st</Th>
+          <Th>2nd</Th>
+          <Th>3rd</Th>
+          <Th></Th>
         </Tr>
+      </thead>
+      {payTableArray.map((payLine) => (
+        <tbody key={payLine.comb}>
+          <Tr>
+            <Td>{payLine.comb}</Td>
+            <Td>{payLine.prize}</Td>
+            <Td>{payLine.prize * 2}</Td>
+            <Td>{payLine.prize * 5}</Td>
+            <Td>{payLine.comb}</Td>
+          </Tr>
+        </tbody>
       ))}
     </Table>
   )
 }
+
+export default memo(PayTable)

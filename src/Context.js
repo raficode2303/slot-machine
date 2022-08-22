@@ -95,5 +95,7 @@ export const useGlobalContext = () => {
   if (context === undefined) {
     throw new Error('useCount must be used within a SlotContextProvider')
   }
+  console.log('%c context reneders', 'border:5px dotted red')
+
   return context
 }

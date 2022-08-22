@@ -47,6 +47,8 @@ export const Main = () => {
   const numberOfreelsArray = [...Array(numberOfreels).keys()]
   console.log('numberOfReels', numberOfreels)
   console.log('reelPosition at Main: ', reelPosition)
+  console.log('%c Main: Reel & Symbols reneders', 'border: solid gold')
+
   return (
     <>
       <Wrapper className='reels-container'>
