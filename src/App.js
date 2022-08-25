@@ -1,26 +1,25 @@
 // start 07/07/2022, 11:35
 // == TODO TODAY ==
-// carousel-vertical - works, with random symbol stops, need to make it to stop at different time and different symbols
-// not map over Symbols for every Reel
-// applay useMemo so symbols not reload everytime bet changed
+// carousel-vertical - works, with random symbol stops, need to make it to stop at different time and(delay)different symbols also need to change direction of the roll from top to down
 // need to make screen to know if the value is after updating credits or before
-// need to update winner paid when win
-
-// == TODO NEXT ==
 // - add payline at the middle
 // - show winner alert
 // - create the logic for winners/losers options
-// -- make 'spin reels' button Neon
-// add joystick for 'spin reels'
-// add sounds
 
-// TOFIX: WHY the reels spin time is different depence on the amount AND NOT FIXED?
-// MAIN-CHALLENGE: make smooth slot machine with the same speed and different stop times
+// not map over Symbols for every Reel
+// applay useMemo so symbols not reload everytime bet changed
 
-// === TODO NEXT ==
-// add all sounds and volume controll symbol
+// == TODO NEXT ==
 // pages: best winners/players page, rare of combination, how many times combination was...
+// add all sounds and volume controll symbol
 // useMemo, useReducer, React Router v6, useNavigate
+
+// === TODO EXTRA ==
+// add joystick for 'spin reels'
+// -- make 'spin reels' button Neon
+// multi slots and symbols
+// filter: invert(360%) toggle button
+
 // FTA=FirstTryAlone!: flex-reverse??, use carucella 3d??.
 // make reels curve
 // merge reels amount select and visible Symbols option from carousel/slider branch
@@ -79,7 +78,7 @@ function App() {
     <>
       <GlobalStyle />
       <div className='app'>
-        {/* <Header bcgimage={logo} /> */}
+        <Header bcgimage={logo} />
         <Main />
         <CreditsCoinsScreen screensData={screensData} />
         <BetButtons buttons={buttons} />

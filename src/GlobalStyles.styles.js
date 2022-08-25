@@ -11,6 +11,15 @@ export const GlobalStyle = createGlobalStyle`
     user-select: none;
   }
 
+  html {
+    /* filter: invert(360%); */
+  }
+
+  body {
+    /* background-color: black; */
+    /* color: white; */
+  }
+
   h2{text-align: center;}
 
   .app {
