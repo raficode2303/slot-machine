@@ -34,7 +34,7 @@ import { GlobalStyle } from './GlobalStyles.styles'
 import { useGlobalContext } from './context'
 // components
 import { Header } from './components/Header'
-import { Button } from './components/Button'
+
 import { Main } from './components/Main'
 
 import { CreditsCoinsScreen } from './components/CreditsCoinsScreen'

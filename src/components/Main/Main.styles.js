@@ -7,6 +7,9 @@ export const Wrapper = styled.main`
 
   height: 600px;
   gap: 1px;
+
+  position: relative;
+
   overflow: hidden;
 `
 

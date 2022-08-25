@@ -1,6 +1,7 @@
 // components
 import { Wrapper, Reel, SymbolImg } from './Main.styles'
 import { Symbols } from '../../helpers'
+import { PayLine } from '../PayLine'
 
 // unike key
 import { nanoid } from 'nanoid'
@@ -64,6 +65,7 @@ export const Main = () => {
             ))}
           </Reel>
         ))}
+        <PayLine />
       </Wrapper>
     </>
   )
