@@ -16,7 +16,10 @@ export const Wrapper = styled.main`
 export const Reel = styled.div.attrs((props) => ({
   // using the attrs method, together with a style object for frequently changed styles.
   style: {
-    top: props.topPosition + 'px',
+    top:
+      (props.topPosition > props.whenReelStop
+        ? props.topPosition % 3000
+        : props.whenReelStop % 3000) + 'px',
   },
 }))`
   /* height: 200px; */

@@ -2,6 +2,7 @@
 
 import { useState, createContext, useContext, useRef, useEffect } from 'react'
 // helpers
+// **TODO**: import symbols from here
 import { importSounds } from './helpers'
 // audio
 const sounds = importSounds()
@@ -17,6 +18,7 @@ export const SlotContextProvider = ({ children }) => {
   const [visibleSymbols, setVisibleSymbols] = useState(3)
   const [buttonChanged, setButtonChanged] = useState(() => false)
   const [topPosition, setTopPosition] = useState(() => 0)
+  const [visibleSymbolsIds, setVisibleSymbolsIds] = useState(() => [1, 1, 1])
   const [reelPosition, setReelPosition] = useState(() => 0)
 
   const [coinsPlayed, setCoinsPlayed] = useState({
@@ -46,41 +48,47 @@ export const SlotContextProvider = ({ children }) => {
   }, [coinsPlayed, winnerPaid, credits])
   // audio with Ref
   const audioStart = useRef(new Audio(Object.values(sounds)[0]))
-  // get reelHeight from context...
-  const reelHeight = useRef(600)
+  // **TODO**: get symbolHeight from context...
+  const symbolHeight = useRef(200)
+  const reelHeight = useRef(symbolHeight.current * visibleSymbols) // 600
 
   const rollReels = () => {
     console.log('enter RotateReelsRotateReels')
     setButtonChanged(true)
     audioStart.current.play()
-    // for now the reel start always from the sampe position
+    // for now the reel start always from the same position
     // need to change this that it will continue to spin from the last stop
-    setReelPosition(
-      // need to change random generator
-      (perv) =>
-        perv -
-        reelHeight.current *
-          (visibleSymbols + 2 + Math.floor(Math.random() * 5))
+    setVisibleSymbolsIds((prev) =>
+      prev.map((_currentRandomid) => getRandomSymbolIds())
     )
+    setReelPosition((perv) => perv - symbolHeight.current * 15 * 2) //  RELL ROOLS TWICE
   }
-  console.log(coinsPlayed, setCoinsPlayed)
+  console.log('visibleSymbolsIds: ', visibleSymbolsIds)
+
+  function getRandomSymbolIds() {
+    // **TODO**: get amount of symbols from helpers.js
+
+    return Math.floor(Math.random() * 15) + 1 // 15 is the amount unike of symbols
+  }
   return (
     <Context.Provider
       value={{
         topPosition,
         visibleSymbols,
+        visibleSymbolsIds,
         reelPosition,
         buttonChanged,
         numberOfreels,
         coinsPlayed,
         screensData,
-        setTopPosition,
         rollReels,
-        setReelPosition,
+        setTopPosition,
+        setVisibleSymbolsIds,
         setButtonChanged,
         setCoinsPlayed,
         setScreensData,
         setWinnerPaid,
+        setReelPosition,
       }}
     >
       {children}

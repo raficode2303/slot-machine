@@ -15,21 +15,21 @@ import symbol14 from './images/pngwing.com (14).png'
 import symbol15 from './images/pngwing.com (15).png'
 
 export const Symbols = [
-  symbol1,
-  symbol2,
-  symbol3,
-  symbol4,
-  symbol5,
-  symbol6,
-  symbol7,
-  symbol8,
-  symbol9,
-  symbol10,
-  symbol11,
-  symbol12,
-  symbol13,
-  symbol14,
-  symbol15,
+  { url: symbol1, id: 1 },
+  { url: symbol2, id: 2 },
+  { url: symbol3, id: 3 },
+  { url: symbol4, id: 4 },
+  { url: symbol5, id: 5 },
+  { url: symbol6, id: 6 },
+  { url: symbol7, id: 7 },
+  { url: symbol8, id: 8 },
+  { url: symbol9, id: 9 },
+  { url: symbol10, id: 10 },
+  { url: symbol11, id: 11 },
+  { url: symbol12, id: 12 },
+  { url: symbol13, id: 13 },
+  { url: symbol14, id: 14 },
+  { url: symbol15, id: 15 },
 ]
 
 export function shuffleArray(array) {

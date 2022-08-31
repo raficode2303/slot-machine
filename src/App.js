@@ -1,8 +1,9 @@
 // start 07/07/2022, 11:35
 // == TODO TODAY ==
 // carousel-vertical - works, with random symbol stops, need to make it to stop at different time and(delay)different symbols also need to change direction of the roll from top to down
+// CHALLENGE: HOW TO KNOW WHAT IS THE 3 CHOSEN SYMBOLS??
 // need to make screen to know if the value is after updating credits or before
-// - add payline at the middle
+// - add payline at the middle - DONE, basic.
 // - show winner alert
 // - create the logic for winners/losers options
 
@@ -48,12 +49,13 @@ const buttons = ['bet one', 'bet max', 'spin reels']
 function App() {
   const {
     reelPosition,
+    topPosition,
     buttonChanged,
     coinsPlayed,
     screensData,
     setReelPosition,
     setButtonChanged,
-    topPosition,
+    visibleSymbolsIds,
     setTopPosition,
   } = useGlobalContext()
   console.log('reelPosition: ', reelPosition)

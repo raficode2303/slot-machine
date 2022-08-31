@@ -34,6 +34,7 @@ export const Main = () => {
     reelPosition,
     numberOfreels = 1,
     visibleSymbols = 1,
+    visibleSymbolsIds,
   } = useGlobalContext()
   // add visible symbols to the end of symbols
   const [symbolsArray, setSymbolsArray] = useState(() => {
@@ -57,11 +58,15 @@ export const Main = () => {
           <Reel
             className='reel'
             key={nanoid()}
-            topPosition={topPosition % 3000}
-            numberOfreels={numberOfreels}
+            topPosition={topPosition}
+            whenReelStop={-3000 - 200 * visibleSymbolsIds[index]} // **TODO** - get 3000 and 200 from context
           >
             {symbolsArray.map((symbol) => (
-              <SymbolImg key={nanoid()} src={symbol} />
+              <SymbolImg
+                key={nanoid()}
+                src={symbol.url}
+                data-symbol-number={symbol.id}
+              />
             ))}
           </Reel>
         ))}
